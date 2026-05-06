@@ -241,6 +241,101 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &902278527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 902278529}
+  - component: {fileID: 902278528}
+  m_Layer: 0
+  m_Name: PlayerInputHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &902278528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902278527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70bdceb3c0f4777bc3370371d1fdde7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionKeyCode: 323
+--- !u!4 &902278529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902278527}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1046481888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1046481890}
+  - component: {fileID: 1046481889}
+  m_Layer: 0
+  m_Name: PawnDragController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1046481889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046481888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c112aef4faa453bbddbf256f4717e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputHandler: {fileID: 902278528}
+  playerCamera: {fileID: 4796405414607977317}
+  raycastTargetLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  raycastMaxDistance: 50
+--- !u!4 &1046481890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046481888}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1396506902 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6461167978738588755, guid: 154fa562c54df314c9065a2b1e5a90a7,
@@ -334,6 +429,7 @@ MonoBehaviour:
   settings: {fileID: 11400000, guid: c3b00c709b1f94f22a212add39c80449, type: 2}
   boardView: {fileID: 1396506902}
   pawnSpawner: {fileID: 1579829401}
+  pawnDragController: {fileID: 1046481889}
 --- !u!4 &1634882514
 Transform:
   m_ObjectHideFlags: 0
@@ -485,6 +581,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 368457728b5d74561b805d9bb789017e, type: 3}
+--- !u!20 &4796405414607977317 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1559381485759989653, guid: 368457728b5d74561b805d9bb789017e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4796405414607977316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -492,5 +594,7 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 1634882514}
   - {fileID: 1579829402}
+  - {fileID: 902278529}
+  - {fileID: 1046481890}
   - {fileID: 4796405414607977316}
   - {fileID: 2501256594884109778}

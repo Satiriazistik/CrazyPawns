@@ -1,5 +1,4 @@
-﻿using System;
-using CrazyPawn;
+﻿using CrazyPawn;
 using UnityEngine;
 
 namespace Game.Board

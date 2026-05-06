@@ -1,5 +1,6 @@
 ﻿using CrazyPawn;
 using Game.Board;
+using Game.Interaction;
 using Game.Pawn;
 using Game.Spawn;
 using UnityEngine;
@@ -17,10 +18,14 @@ namespace Bootstrap
         [SerializeField]
         private PawnSpawner pawnSpawner;
 
+        [SerializeField]
+        private PawnDragController pawnDragController;
+        
         private void Awake()
         {
             InitializeGameBoard();
             SpawnPawns();
+            InitializeDragController();
         }
 
         private void InitializeGameBoard()
@@ -39,7 +44,15 @@ namespace Bootstrap
             var spawnAreaConfig = new SpawnAreaConfig(Vector3.zero, settings.InitialZoneRadius, boardCenter, boardSize);
             var spawnArea = new CircleBoardSpawnArea(spawnAreaConfig);
             
-            pawnSpawner.Spawn(settings.InitialPawnCount, spawnArea);
+            var pawnInstances = pawnSpawner.Spawn(settings.InitialPawnCount, spawnArea);
+            foreach (var pawnInstance in pawnInstances)
+                pawnInstance.Initialize(settings.DeleteMaterial, settings.ActiveConnectorMaterial);
+        }
+
+        private void InitializeDragController()
+        {
+            var boardBounds = new BoardBounds(settings.CheckerboardSize * BoardConstants.CELL_SIZE);
+            pawnDragController.Initialize(boardBounds);
         }
         
     }

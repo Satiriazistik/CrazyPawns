@@ -1,4 +1,5 @@
-﻿using CrazyPawn;
+﻿using System.Collections.Generic;
+using CrazyPawn;
 using Game.Spawn;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ namespace Game.Pawn
         [SerializeField]
         private Transform parent;
 
+        private List<PawnController> _pawns = new List<PawnController>();
+        
 #if UNITY_EDITOR
         [Header("Editor Preview")]
         [SerializeField]
@@ -23,13 +26,27 @@ namespace Game.Pawn
         private Color gizmoColor = Color.red;
 #endif
         
-        public void Spawn(int count, ISpawnArea spawnArea)
+        public IReadOnlyList<PawnController> Spawn(int count, ISpawnArea spawnArea)
         {
+            for (int i = 0; i < _pawns.Count; i++)
+                Destroy(_pawns[i].gameObject);
+            
+            _pawns.Clear();
+            
             for (int i = 0; i < count; i++)
             {
                 var position = spawnArea.GetRandomPoint();
-                Instantiate(pawnPrefab, position, Quaternion.identity, parent);
+                var pawnInstance = Instantiate(pawnPrefab, position, Quaternion.identity, parent);
+                if (!pawnInstance.TryGetComponent<PawnController>(out var pawnController))
+                {
+                    Debug.LogError($"Cannot find {nameof(PawnController)} component on pawn instance.", pawnInstance);
+                    continue;
+                }
+                
+                _pawns.Add(pawnController);
             }
+
+            return _pawns;
         }
         
 #if UNITY_EDITOR

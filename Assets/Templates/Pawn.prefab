@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3822121263811634697}
   - component: {fileID: 1943715399338178067}
   - component: {fileID: 3840827511942012006}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SphereSocket 01
-  m_TagString: Untagged
+  m_TagString: SphereSocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7607398093294646273}
   - component: {fileID: 3122819507672773018}
-  m_Layer: 0
+  - component: {fileID: 1062858979859472026}
+  - component: {fileID: 6163960122667065323}
+  m_Layer: 3
   m_Name: Pawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,6 +169,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686ad004d5bb64fceab6029676c964ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1062858979859472026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336407271673045507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e50e1027324cd2bbf17fe8f4f41388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pawnView: {fileID: 6163960122667065323}
+--- !u!114 &6163960122667065323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336407271673045507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3912de35d5a54482aa3c475fec9126ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pawnGraphics:
+  - {fileID: 8039290623323058629}
+  - {fileID: 3822121263811634697}
+  - {fileID: 2667045952127566873}
+  - {fileID: 5554702584534788149}
+  - {fileID: 5589964279256305542}
 --- !u!1 &6572458348302323540
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +212,7 @@ GameObject:
   - component: {fileID: 6983469710422659349}
   - component: {fileID: 8039290623323058629}
   - component: {fileID: 7724141220265440265}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CubeBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,9 +318,9 @@ GameObject:
   - component: {fileID: 2667045952127566873}
   - component: {fileID: 1211455031588432381}
   - component: {fileID: 6685997259256018743}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SphereSocket 02
-  m_TagString: Untagged
+  m_TagString: SphereSocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -403,9 +436,9 @@ GameObject:
   - component: {fileID: 5589964279256305542}
   - component: {fileID: 430658776270710120}
   - component: {fileID: 1573665014748631932}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SphereSocket 04
-  m_TagString: Untagged
+  m_TagString: SphereSocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -521,9 +554,9 @@ GameObject:
   - component: {fileID: 5554702584534788149}
   - component: {fileID: 8464554459641446980}
   - component: {fileID: 594588265260032354}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SphereSocket 03
-  m_TagString: Untagged
+  m_TagString: SphereSocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
