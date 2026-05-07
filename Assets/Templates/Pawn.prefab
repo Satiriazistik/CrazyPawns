@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 3822121263811634697}
   - component: {fileID: 1943715399338178067}
   - component: {fileID: 3840827511942012006}
-  m_Layer: 3
+  - component: {fileID: 2299799634006441754}
+  m_Layer: 6
   m_Name: SphereSocket 01
   m_TagString: SphereSocket
   m_Icon: {fileID: 0}
@@ -118,6 +119,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e20b49f1b1349b79b1d3a77f037666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2299799634006441754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822488028157087553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d92300fb5e0482e9b18355fc93a4cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4336407271673045507
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +143,7 @@ GameObject:
   - component: {fileID: 3122819507672773018}
   - component: {fileID: 1062858979859472026}
   - component: {fileID: 6163960122667065323}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Pawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,6 +195,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawnView: {fileID: 6163960122667065323}
+  pawnBody: {fileID: 7181281929977569484}
+  pawnConnectors:
+  - {fileID: 2299799634006441754}
+  - {fileID: 7011886438742966}
+  - {fileID: 4899638220213017162}
+  - {fileID: 4336085331360890330}
 --- !u!114 &6163960122667065323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +219,15 @@ MonoBehaviour:
   - {fileID: 2667045952127566873}
   - {fileID: 5554702584534788149}
   - {fileID: 5589964279256305542}
+  connectorVisualBindings:
+  - Connector: {fileID: 2299799634006441754}
+    Renderer: {fileID: 3822121263811634697}
+  - Connector: {fileID: 7011886438742966}
+    Renderer: {fileID: 2667045952127566873}
+  - Connector: {fileID: 4899638220213017162}
+    Renderer: {fileID: 5554702584534788149}
+  - Connector: {fileID: 4336085331360890330}
+    Renderer: {fileID: 5589964279256305542}
 --- !u!1 &6572458348302323540
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +240,7 @@ GameObject:
   - component: {fileID: 6983469710422659349}
   - component: {fileID: 8039290623323058629}
   - component: {fileID: 7724141220265440265}
+  - component: {fileID: 7181281929977569484}
   m_Layer: 3
   m_Name: CubeBody
   m_TagString: Untagged
@@ -305,6 +334,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7181281929977569484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6572458348302323540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b613edf3a14f40a6a7fd4a27b778b34b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6976845434568547336
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +359,8 @@ GameObject:
   - component: {fileID: 2667045952127566873}
   - component: {fileID: 1211455031588432381}
   - component: {fileID: 6685997259256018743}
-  m_Layer: 3
+  - component: {fileID: 7011886438742966}
+  m_Layer: 6
   m_Name: SphereSocket 02
   m_TagString: SphereSocket
   m_Icon: {fileID: 0}
@@ -423,6 +465,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e20b49f1b1349b79b1d3a77f037666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7011886438742966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6976845434568547336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d92300fb5e0482e9b18355fc93a4cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7758970563510421918
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +490,8 @@ GameObject:
   - component: {fileID: 5589964279256305542}
   - component: {fileID: 430658776270710120}
   - component: {fileID: 1573665014748631932}
-  m_Layer: 3
+  - component: {fileID: 4336085331360890330}
+  m_Layer: 6
   m_Name: SphereSocket 04
   m_TagString: SphereSocket
   m_Icon: {fileID: 0}
@@ -541,6 +596,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e20b49f1b1349b79b1d3a77f037666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4336085331360890330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7758970563510421918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d92300fb5e0482e9b18355fc93a4cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8974895304155393534
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +621,8 @@ GameObject:
   - component: {fileID: 5554702584534788149}
   - component: {fileID: 8464554459641446980}
   - component: {fileID: 594588265260032354}
-  m_Layer: 3
+  - component: {fileID: 4899638220213017162}
+  m_Layer: 6
   m_Name: SphereSocket 03
   m_TagString: SphereSocket
   m_Icon: {fileID: 0}
@@ -657,5 +725,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67e20b49f1b1349b79b1d3a77f037666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4899638220213017162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8974895304155393534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d92300fb5e0482e9b18355fc93a4cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

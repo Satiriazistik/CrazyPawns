@@ -5,29 +5,16 @@ using UnityEngine;
 
 namespace Game.Interaction
 {
-    public class PawnDragController : MonoBehaviour
+    public class PawnDragController : PlayerInteractionHandler
     {
         [SerializeField]
-        private PlayerInputHandler inputHandler;
-
-        [SerializeField]
         private Camera playerCamera;
-
-        [SerializeField]
-        private LayerMask raycastTargetLayers;
-
-        [SerializeField]
-        private float raycastMaxDistance = 50f;
-        
-        private PlayerRaycaster _playerRaycaster;
 
         private PawnController _currentPawn;
 
         private BoardBounds _boardBounds;
 
         private Plane _worldPlane;
-
-        private bool _initialized;
 
         public void Initialize(BoardBounds boardBounds)
         {
@@ -36,52 +23,31 @@ namespace Game.Interaction
             _playerRaycaster = new PlayerRaycaster(playerCamera, raycastTargetLayers, raycastMaxDistance);
 
             _worldPlane = new Plane(Vector3.up, Vector3.zero);
-            
-            _initialized = true;
         }
         
-        private void Update()
-        {
-            if (!_initialized)
-                return;
-            
-            inputHandler.HandleUpdate();
-            PlayerDragUpdate();
-        }
-
-        private void PlayerDragUpdate()
-        {
-            if (inputHandler.IsInteractionStarted)
-                PlayerInteractionStarted();
-            
-            if (inputHandler.IsInteractionHeld)
-                PlayerInteractionHeld();
-            
-            if (inputHandler.IsInteractionEnded)
-                PlayerInteractionEnded();
-        }
-        
-        private void PlayerInteractionStarted()
+        protected override void OnInteractionStarted(IPlayerInput inputHandler)
         {
             if (!_playerRaycaster.DoCameraMouseRaycast(inputHandler.MousePosition, out var hitInfo))
                 return;
 
-            var pawnController = hitInfo.collider.transform.GetComponentInParent<PawnController>();
-            if (pawnController == null)
+            if (!hitInfo.collider.gameObject.TryGetComponent<PawnBody>(out var pawnBody))
+                return;
+
+            if (pawnBody.Owner == null)
             {
-                Debug.LogError($"Collider: {hitInfo.collider.name} is on Pawn layer, but has no {nameof(PawnController)} component in parent. Pawn dragging is impossible.", hitInfo.collider);
+                Debug.LogError($"{nameof(PawnBody)} has no owner assigned.", pawnBody);
                 return;
             }
 
-            _currentPawn = pawnController;
+            _currentPawn = pawnBody.Owner;
         }
 
-        private void PlayerInteractionHeld()
+        protected override void OnInteractionHeld(IPlayerInput inputHandler)
         {
             if (_currentPawn == null)
                 return;
 
-            if (TryGetMouseWorldPoint(out var pawnPosition))
+            if (TryGetMouseWorldPoint(inputHandler.MousePosition, out var pawnPosition))
             {
                 _currentPawn.PawnTransform.position = pawnPosition;
                 
@@ -90,20 +56,20 @@ namespace Game.Interaction
             }
         }
 
-        private void PlayerInteractionEnded()
+        protected override void OnInteractionEnded(IPlayerInput inputHandler)
         {
             if (_currentPawn == null)
                 return;
             
             if (_currentPawn.CurrentPawnState == PawnState.OutOfBoard)
-                Destroy(_currentPawn.gameObject);
+                _currentPawn.DestroyPawn();
             
             _currentPawn = null;
         }
         
-        private bool TryGetMouseWorldPoint(out Vector3 point)
+        private bool TryGetMouseWorldPoint(Vector3 mousePosition, out Vector3 point)
         {
-            var ray = playerCamera.ScreenPointToRay(inputHandler.MousePosition);
+            var ray = playerCamera.ScreenPointToRay(mousePosition);
 
             if (_worldPlane.Raycast(ray, out var distance))
             {

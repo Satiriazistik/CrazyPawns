@@ -10,16 +10,24 @@ namespace Game.Pawn
         [SerializeField]
         private Renderer[] pawnGraphics;
 
-        private Material[] _baseMaterials;
+        [SerializeField]
+        private ConnectorVisualBinding[] connectorVisualBindings;
+
+        private Material[] _basePawnMaterials;
+        private Material[] _baseConnectorMaterials;
         
         public void Initialize(Material deleteMaterial, Material activeConnectorMaterial)
         {
             _deleteMaterial = deleteMaterial;
             _activeConnectorMaterial = activeConnectorMaterial;
 
-            _baseMaterials = new Material[pawnGraphics.Length];
-            for (int i = 0; i < _baseMaterials.Length; i++)
-                _baseMaterials[i] = pawnGraphics[i].sharedMaterial;
+            _basePawnMaterials = new Material[pawnGraphics.Length];
+            for (int i = 0; i < _basePawnMaterials.Length; i++)
+                _basePawnMaterials[i] = pawnGraphics[i].sharedMaterial;
+
+            _baseConnectorMaterials = new Material[connectorVisualBindings.Length];
+            for (int i = 0; i < _baseConnectorMaterials.Length; i++)
+                _baseConnectorMaterials[i] = connectorVisualBindings[i].Renderer.sharedMaterial;
         }
 
         public void ApplyDeleteMaterial()
@@ -32,7 +40,39 @@ namespace Game.Pawn
         public void ApplyBaseMaterial()
         {
             for (int i = 0; i < pawnGraphics.Length; i++)
-                pawnGraphics[i].material = _baseMaterials[i];
+                pawnGraphics[i].material = _basePawnMaterials[i];
+        }
+
+        public void HighlightConnector(PawnConnector connector)
+        {
+            for (int i = 0; i < connectorVisualBindings.Length; i++)
+            {
+                var binding = connectorVisualBindings[i];
+                if (binding.Connector == connector)
+                {
+                    binding.Renderer.material = _activeConnectorMaterial;
+                    break;
+                }
+            }
+        }
+
+        public void ClearHighlightConnector(PawnConnector connector)
+        {
+            for (int i = 0; i < connectorVisualBindings.Length; i++)
+            {
+                var binding = connectorVisualBindings[i];
+                if (binding.Connector == connector)
+                {
+                    binding.Renderer.material = _baseConnectorMaterials[i];
+                    break;
+                }
+            }
+        }
+
+        public void ClearConnectorHighlights()
+        {
+            for (int i = 0; i < connectorVisualBindings.Length; i++)
+                connectorVisualBindings[i].Renderer.material = _baseConnectorMaterials[i];
         }
         
     }

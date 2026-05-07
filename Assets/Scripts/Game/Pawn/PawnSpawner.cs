@@ -11,6 +11,8 @@ namespace Game.Pawn
 {
     public class PawnSpawner : MonoBehaviour
     {
+        public List<PawnController> PawnInstances => _pawns;
+        
         [SerializeField]
         private GameObject pawnPrefab;
         [SerializeField]

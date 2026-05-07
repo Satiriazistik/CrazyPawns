@@ -20,12 +20,16 @@ namespace Bootstrap
 
         [SerializeField]
         private PawnDragController pawnDragController;
+
+        [SerializeField]
+        private PawnConnectionController pawnConnectionController;
         
         private void Awake()
         {
             InitializeGameBoard();
             SpawnPawns();
             InitializeDragController();
+            InitializeConnectionController();
         }
 
         private void InitializeGameBoard()
@@ -54,6 +58,10 @@ namespace Bootstrap
             var boardBounds = new BoardBounds(settings.CheckerboardSize * BoardConstants.CELL_SIZE);
             pawnDragController.Initialize(boardBounds);
         }
-        
+
+        private void InitializeConnectionController()
+        {
+            pawnConnectionController.Initialize(pawnSpawner.PawnInstances);
+        }
     }
 }

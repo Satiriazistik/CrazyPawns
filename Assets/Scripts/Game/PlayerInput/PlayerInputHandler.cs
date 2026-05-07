@@ -2,7 +2,7 @@
 
 namespace Game.PlayerInput
 {
-    public class PlayerInputHandler : MonoBehaviour
+    public class PlayerInputHandler : MonoBehaviour, IPlayerInput
     {
         public Vector3 MousePosition { get; private set; }
 
