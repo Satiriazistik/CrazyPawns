@@ -1,4 +1,4 @@
-﻿namespace Game.Pawn
+﻿namespace Pawn
 {
     public enum PawnState
     {

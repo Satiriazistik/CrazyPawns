@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
 using CrazyPawn;
-using Game.Spawn;
+using Spawn;
+using UnityEditor;
 using UnityEngine;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
-namespace Game.Pawn
+namespace Pawn
 {
     public class PawnSpawner : MonoBehaviour
     {

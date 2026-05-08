@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Spawn
+namespace Spawn
 {
     public class SpawnAreaConfig
     {

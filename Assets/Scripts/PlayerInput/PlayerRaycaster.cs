@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.PlayerInput
+namespace PlayerInput
 {
     public class PlayerRaycaster
     {

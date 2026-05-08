@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Game.Pawn;
-using Game.PlayerInput;
+using Pawn;
+using PlayerInput;
 using UnityEngine;
 
-namespace Game.Interaction
+namespace Interaction
 {
     public class PawnConnectionController : PlayerInteractionHandler
     {
@@ -12,9 +12,6 @@ namespace Game.Interaction
 
         [SerializeField]
         private Transform linesParent;
-        
-        [SerializeField]
-        private Camera playerCamera;
 
         private List<PawnController> _pawns = new List<PawnController>();
         
@@ -66,6 +63,8 @@ namespace Game.Interaction
         {
             base.OnInteractionUpdate(inputHandler);
             UpdateHoveredConnector(inputHandler);
+
+            InteractionIsActive = IsConnectionSelectionActive;
         }
         
         protected override void OnInteractionStarted(IPlayerInput inputHandler)

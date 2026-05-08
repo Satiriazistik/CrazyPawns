@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Board
+namespace Board
 {
     public class BoardGenerationConfig
     {

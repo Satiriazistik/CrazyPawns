@@ -1,28 +1,21 @@
-﻿using Game.Board;
-using Game.Pawn;
-using Game.PlayerInput;
+﻿using Board;
+using Pawn;
+using PlayerInput;
 using UnityEngine;
 
-namespace Game.Interaction
+namespace Interaction
 {
     public class PawnDragController : PlayerInteractionHandler
     {
-        [SerializeField]
-        private Camera playerCamera;
-
         private PawnController _currentPawn;
 
         private BoardBounds _boardBounds;
-
-        private Plane _worldPlane;
-
+        
         public void Initialize(BoardBounds boardBounds)
         {
             _boardBounds = boardBounds;
             
             _playerRaycaster = new PlayerRaycaster(playerCamera, raycastTargetLayers, raycastMaxDistance);
-
-            _worldPlane = new Plane(Vector3.up, Vector3.zero);
         }
         
         protected override void OnInteractionStarted(IPlayerInput inputHandler)
@@ -40,6 +33,8 @@ namespace Game.Interaction
             }
 
             _currentPawn = pawnBody.Owner;
+
+            InteractionIsActive = true;
         }
 
         protected override void OnInteractionHeld(IPlayerInput inputHandler)
@@ -65,21 +60,8 @@ namespace Game.Interaction
                 _currentPawn.DestroyPawn();
             
             _currentPawn = null;
+            
+            InteractionIsActive = false;
         }
-        
-        private bool TryGetMouseWorldPoint(Vector3 mousePosition, out Vector3 point)
-        {
-            var ray = playerCamera.ScreenPointToRay(mousePosition);
-
-            if (_worldPlane.Raycast(ray, out var distance))
-            {
-                point = ray.GetPoint(distance);
-                return true;
-            }
-
-            point = default;
-            return false;
-        }
-        
     }
 }

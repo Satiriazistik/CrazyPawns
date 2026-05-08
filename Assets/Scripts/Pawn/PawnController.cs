@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Game.Pawn
+namespace Pawn
 {
     public class PawnController : MonoBehaviour
     {

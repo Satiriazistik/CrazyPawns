@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Game.Pawn
+namespace Pawn
 {
     [Serializable]
     public class ConnectorVisualBinding

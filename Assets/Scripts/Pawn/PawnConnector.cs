@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Game.Pawn
+namespace Pawn
 {
     public class PawnConnector : MonoBehaviour
     {

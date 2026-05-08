@@ -2,7 +2,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Game.Spawn
+namespace Spawn
 {
     public class CircleBoardSpawnArea : ISpawnArea
     {

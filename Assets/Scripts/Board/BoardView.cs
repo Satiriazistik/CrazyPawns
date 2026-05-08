@@ -1,7 +1,7 @@
 ﻿using CrazyPawn;
 using UnityEngine;
 
-namespace Game.Board
+namespace Board
 {
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
     public class BoardView : MonoBehaviour

@@ -1,8 +1,8 @@
-﻿using CrazyPawn;
-using Game.Board;
-using Game.Interaction;
-using Game.Pawn;
-using Game.Spawn;
+﻿using Board;
+using CrazyPawn;
+using Interaction;
+using Pawn;
+using Spawn;
 using UnityEngine;
 
 namespace Bootstrap

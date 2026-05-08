@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Game.Pawn;
+using Pawn;
 using UnityEngine;
 
-namespace Game.Interaction
+namespace Interaction
 {
     public class PawnConnectionSystemConfig
     {

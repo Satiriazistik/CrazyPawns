@@ -1,4 +1,4 @@
-﻿namespace Game.Board
+﻿namespace Board
 {
     public static class BoardConstants
     {

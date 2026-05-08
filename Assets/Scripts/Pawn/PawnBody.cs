@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Pawn
+namespace Pawn
 {
     public class PawnBody : MonoBehaviour
     {
