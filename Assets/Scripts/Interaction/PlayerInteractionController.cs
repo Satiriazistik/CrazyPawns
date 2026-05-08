@@ -1,6 +1,5 @@
 ﻿using PlayerInput;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Interaction
 {

@@ -1,5 +1,4 @@
-﻿using System;
-using PlayerInput;
+﻿using PlayerInput;
 using UnityEngine;
 
 namespace Interaction
