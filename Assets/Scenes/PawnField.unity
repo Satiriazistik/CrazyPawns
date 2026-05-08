@@ -153,9 +153,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputHandler: {fileID: 902278528}
-  interactionHandlers:
+  objectInteractionHandlers:
   - {fileID: 1046481889}
   - {fileID: 371956156}
+  playerCameraController: {fileID: 4796405414607977320}
 --- !u!4 &254328809
 Transform:
   m_ObjectHideFlags: 0
@@ -200,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 333e5f2821c066149846ba03cddd23d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 4796405414607977317}
   raycastTargetLayers:
     serializedVersion: 2
     m_Bits: 64
@@ -207,7 +209,6 @@ MonoBehaviour:
   lineRendererPrefab: {fileID: 726921941669003007, guid: bd8b1cc1c0c36fb42bd32af37d2b1f65,
     type: 3}
   linesParent: {fileID: 909959085}
-  playerCamera: {fileID: 4796405414607977317}
 --- !u!4 &371956157
 Transform:
   m_ObjectHideFlags: 0
@@ -512,11 +513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c112aef4faa453bbddbf256f4717e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 4796405414607977317}
   raycastTargetLayers:
     serializedVersion: 2
     m_Bits: 72
   raycastMaxDistance: 50
-  playerCamera: {fileID: 4796405414607977317}
 --- !u!4 &1046481890
 Transform:
   m_ObjectHideFlags: 0
@@ -857,6 +858,18 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 4796405414607977316}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4796405414607977320 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8026203197603405793, guid: 368457728b5d74561b805d9bb789017e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4796405414607977316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2faf93ddea845109d33b7f291a4c243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
