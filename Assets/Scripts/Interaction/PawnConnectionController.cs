@@ -18,7 +18,6 @@ namespace Interaction
         private PawnConnectionSystem _connectionSystem;
 
         private PawnConnector _sourceConnector;
-        private PawnConnector _hoveredConnector;
 
         private bool IsConnectionSelectionActive => _sourceConnector != null;
 
@@ -62,9 +61,10 @@ namespace Interaction
         protected override void OnInteractionUpdate(IPlayerInput inputHandler)
         {
             base.OnInteractionUpdate(inputHandler);
-            UpdateHoveredConnector(inputHandler);
-
             InteractionIsActive = IsConnectionSelectionActive;
+
+            if (IsConnectionSelectionActive)
+                HighlightAllValidConnectors();
         }
         
         protected override void OnInteractionStarted(IPlayerInput inputHandler)
@@ -85,9 +85,7 @@ namespace Interaction
 
             if (!IsConnectionSelectionActive)
             {
-                _sourceConnector = pawnConnector;
-                var pawnController = _sourceConnector.Owner;
-                pawnController.HighlightConnector(_sourceConnector);
+                SetSourceConnector(pawnConnector);
                 return;
             }
 
@@ -128,64 +126,38 @@ namespace Interaction
             ResetConnectionSelection();
         }
 
-        private void UpdateHoveredConnector(IPlayerInput inputHandler)
+        private void HighlightAllValidConnectors()
         {
-            if (!IsConnectionSelectionActive)
-                return;
-
-            if (!_playerRaycaster.DoCameraMouseRaycast(inputHandler.MousePosition, out var hitInfo))
+            for (int i = 0; i < _pawns.Count; i++)
             {
-                ResetHoveredConnector();
-                return;
-            }
-
-            if (!hitInfo.collider.gameObject.TryGetComponent<PawnConnector>(out var pawnConnector))
-            {
-                ResetHoveredConnector();
-                return;
-            }
-
-            if (_hoveredConnector == pawnConnector)
-                return;
-
-            if (_hoveredConnector != null)
-                ResetHoveredConnector();
-
-            if (_connectionSystem.CanConnect(_sourceConnector, pawnConnector))
-            {
-                _hoveredConnector = pawnConnector;
-                var pawnController = _hoveredConnector.Owner;
-                pawnController.HighlightConnector(_hoveredConnector);
+                var pawnController = _pawns[i];
+                var connectors = _pawns[i].PawnConnectors;
+                for (int j = 0; j < connectors.Length; j++)
+                {
+                    var connector = connectors[j];
+                    if (_connectionSystem.CanConnect(_sourceConnector, connector))
+                        pawnController.HighlightConnector(connector);
+                }
             }
         }
 
+        private void ResetConnectorsHighlight()
+        {
+            for (int i = 0; i < _pawns.Count; i++)
+            {
+                var pawnController = _pawns[i];
+                pawnController.ClearAllConnectorHighlights();
+            }
+        }
+        
         private void ResetConnectionSelection()
         {
+            ResetConnectorsHighlight();
             ResetSourceConnector();
-            ResetHoveredConnector();
         }
 
-        private void ResetSourceConnector()
-        {
-            if (_sourceConnector != null)
-            {
-                var pawnController = _sourceConnector.Owner;
-                pawnController.ClearConnectorHighlight(_sourceConnector);
-            }
-
-            _sourceConnector = null;
-        }
-
-        private void ResetHoveredConnector()
-        {
-            if (_hoveredConnector != null)
-            {
-                var pawnController = _hoveredConnector.Owner;
-                pawnController.ClearConnectorHighlight(_hoveredConnector);
-            }
-
-            _hoveredConnector = null;
-        }
+        private void SetSourceConnector(PawnConnector connector) => _sourceConnector = connector; 
+        private void ResetSourceConnector() => _sourceConnector = null;
 
         private void OnPawnDestroyed(PawnController pawn)
         {
